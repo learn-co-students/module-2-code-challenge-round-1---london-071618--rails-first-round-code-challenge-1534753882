@@ -1,0 +1,7 @@
+<h1><%= @power.name.titlecase %></h1>
+<p><%= @power.description %></p>
+<h3>Heroines with this power:</h3>
+<% @power.heroines.each do |heroine| %>
+  <p><%= link_to heroine.super_name, heroine_path(heroine.id) %></p>
+<% end %>
+<%= link_to "See all Powers", powers_path %>
