@@ -32,5 +32,7 @@ heroines = [
 # ---------------
 heroines = heroines.map { |heroine| heroine.merge( { power_id: Power.all.sample.id } ) }
 # ---------------
+puts heroines
+heroines.each { |heroine| puts Heroine.create(heroine) }
 
-heroines.each { |heroine| Heroine.create(heroine) }
+puts Heroine.all.length
