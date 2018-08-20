@@ -1,10 +1,22 @@
 <h2>All Heroines</h2>
 
+<%= link_to "Create New Heroine", new_heroine_path %>
+
+<h3>Search by Superpower:</h3>
+<%= form_tag "/heroines", method:"get" do%>
+<%= text_field_tag :power %>
+<%= submit_tag "Search"%>
+<%end%>
+
+  <% if @heroines.empty? %>
+  <p>No Superheroines with that power exists</p>
+  <%else%>
 <ul>
   <% @heroines.each do |heroine| %>
     <li>
-      <%= heroine.super_name %>
+      <%= link_to heroine.super_name, heroine_path(heroine) %>
     </li>
     <br>
   <% end %>
 </ul>
+<%end%>

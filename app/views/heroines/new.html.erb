@@ -1,0 +1,24 @@
+<h2>Create New Heroine</h2>
+
+<%= link_to "Back to Heroines", heroines_path%>
+
+<%if @heroine.errors.any? %>
+  <div id="error_explanation">
+    <h3>Some errors occurred</h3>
+    <ul>
+      <% @heroine.errors.full_messages.each do |m| %>
+      <li><%= m %></li>
+      <%end%>
+    </ul>
+  </div>
+<%end%>
+
+<%= form_for @heroine do |f|%>
+<%= f.label :name %>
+<%= f.text_field :name %> <br>
+<%= f.label :super_name %>
+<%= f.text_field :super_name %><br>
+<%= f.label "Power" %>
+<%= f.collection_select :power_id, Power.all, :id, :name %><br>
+<%= f.submit "Create Heroine" %>
+<%end%>
