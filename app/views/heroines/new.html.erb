@@ -1,0 +1,22 @@
+<% if @heroine.errors.any? %>
+  <div id="error_explanation">
+    <p><%= pluralize(@heroine.errors.count, "error") %> prohibited this article from being saved:</p>
+
+    <ul>
+    <% @heroine.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<h1>New Heroine Form</h1>
+  <%= form_for @heroine do |f| %>
+  <h4>Name:</h4>
+  <%= f.text_field :name %>
+  <h4>Super Name:</h4>
+  <%= f.text_field :super_name %>
+  <h4>Power:</h4>
+  <%= f.collection_select :power_id, Power.all, :id, :name %>
+  <%= f.submit %>
+<% end %>
